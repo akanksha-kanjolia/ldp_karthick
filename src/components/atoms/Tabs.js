@@ -29,9 +29,12 @@ TabPanel.propTypes = {
 
 
 export default function CustomizedTabs() {
+ // const {newbook} = props;
   const [value, setValue] = useState(0);
+  //const [data, setData] = useState(undefined);
 
   useEffect(() => {
+   // console.log(newbook);
     var url;
     if(value === 0){
       url = 'https://run.mocky.io/v3/520015d9-dacf-4cf1-a892-3e097c9f20d6';
@@ -52,7 +55,6 @@ export default function CustomizedTabs() {
     <div >
       <div >
         <Tabs value={value}
-          aria-label="ant example"
           centered>
           <Tab label="Currently Reading" onClick={() => setValue(0)}>
           </Tab>

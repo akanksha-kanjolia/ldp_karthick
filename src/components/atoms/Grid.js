@@ -5,18 +5,18 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth:'56rem',
+    maxWidth: '56rem',
   },
   paper: {
     padding: theme.spacing(0),
     textAlign: 'center',
-    align:'center',
+    align: 'center',
   },
 }));
 
 export default function NestedGrid(props) {
   const classes = useStyles();
-  const {children} = props;
+  const { children } = props;
   const getBookCard = book => {
     return (
       <Grid item xs={12} sm={4}>
