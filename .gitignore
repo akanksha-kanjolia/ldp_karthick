@@ -1,2 +1,6 @@
-node_modules
-.storybook
+.git/
+.storybook/
+.history/
+README.md
+node_modules/
+build/
