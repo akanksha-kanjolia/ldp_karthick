@@ -1,4 +1,4 @@
-import BookCard from "./book_card";
+import BookCard from "./card";
 import {BookTitle,Author} from "../../atoms/text/text.stories";
 import ReadTimeDiv from "../../molecules/book_description/read_time.stories";
 import OutlinedButton from "../../atoms/button/button.stories";

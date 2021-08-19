@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BookCard from '../organisms/book_card/book_card';
-import Grid from '@material-ui/core/Grid';
+import MUIGrid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,20 +14,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NestedGrid(props) {
+const Grid1 = (props) => {
   const classes = useStyles();
   const { children } = props;
-  const getBookCard = book => {
-    return (
-      <Grid item xs={12} sm={4}>
-        <BookCard {...book} />
-      </Grid>
-    )
-  };
 
   return (
-    <Grid container spacing={1} className={classes.root}>
-      {children.map(book => getBookCard(book))}
-    </Grid>
+    <MUIGrid container spacing={1} className={classes.root}>
+      {children.map(book =>
+        <MUIGrid item xs={12} sm={4}>
+          <BookCard {...book}/>
+        </MUIGrid>)}
+    </MUIGrid>
   )
 }
+
+export default Grid1

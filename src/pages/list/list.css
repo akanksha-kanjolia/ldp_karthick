@@ -1,0 +1,16 @@
+  
+  .header_logo{  
+    width: 180px;
+    height: 26px;
+  }
+
+
+  .content-overflow{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: system-ui;
+    font-size: 20px;
+  }
+  
+  

@@ -1,69 +1,76 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import UploadButton from './uploadbtn' 
 
 
-export default function FormDialog(props) {
-  const [open, setOpen] = React.useState(false);
-  const [title, setTitle] = React.useState("");
-  const [author, setAuthor] = React.useState("");
-  const [image, setImage] = React.useState("");
+const FormDialog = ({eventListener }) => {
+  const [open, setOpen] = useState(false);
+  const [book, setBook] = useState({ name: "", author: "", image: "" });
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   const handleClose = () => {
     setOpen(false);
+    eventListener(book)
+  };
+
+  const updateField = e => {
+    setBook({
+      ...book,
+      [e.target.name]: e.target.value
+    })
   };
 
   useEffect(() => {
-    console.log(title);
-    console.log(author);
-    console.log(image);
-    if(open){
-        setOpen(true);
-    }else{
-        console.log(title);
-        console.log(author);
-        console.log(image);
-        setOpen(false);
+    if (open) {
+      setOpen(true);
+    } else {
+      setOpen(false);
     }
   }, [open]);
 
   return (
     <div>
+      <Button onClick={handleClickOpen}>Add Book</Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Add Book</DialogTitle>
+        <DialogTitle id="form-dialog-title">Upload a Book</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            To Upload a Book.
-          </DialogContentText>
-          <input
+          <TextField
             autoFocus
             margin="dense"
             id="name"
             label="Book Name"
             fullWidth
-            onChange={event => {setTitle(event.target)}}
+            name="name"
+            onChange={updateField}
           />
-          <input
-           autoFocus
-           margin="dense"
-           id="author"
-           label="Author Name"
-           fullWidth 
-           onChange={event => {setAuthor(event.target)}}>
-          </input>
-          <UploadButton id="image" onChange={event => {setImage(event.target)}}/>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="author"
+            label="Author Name"
+            fullWidth
+            name="author"
+            onChange={updateField}>
+          </TextField>
+          <TextField autoFocus
+            margin="dense"
+            id="image"
+            label="image "
+            fullWidth
+            type="file" name="image" onChange={updateField}></TextField>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button open={open} onClick={()=> setOpen(false)} color="primary">
+          <Button onClick={handleClose} color="primary">
             Submit
           </Button>
         </DialogActions>
@@ -71,3 +78,5 @@ export default function FormDialog(props) {
     </div>
   );
 }
+
+export default FormDialog;
