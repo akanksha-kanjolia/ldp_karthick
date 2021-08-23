@@ -19,7 +19,6 @@ header.args = {
     maxWidth: 400,
     marginLeft: '12em'
   },
-  src: '../../../assets/logo1.jpg',
   style: {
     width: '50%'
   }

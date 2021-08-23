@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
+import Button from '../../atoms/button/button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -36,8 +36,8 @@ const FormDialog = ({eventListener }) => {
   }, [open]);
 
   return (
-    <div>
-      <Button onClick={handleClickOpen}>Add Book</Button>
+    <div data-testid="dialog"> 
+      <Button data-testid="addbook" className="header" onClick={handleClickOpen}>Add Book</Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Upload a Book</DialogTitle>
         <DialogContent>
@@ -67,10 +67,10 @@ const FormDialog = ({eventListener }) => {
             type="file" name="image" onChange={updateField}></TextField>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button variant="contained" onClick={() => setOpen(false)} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button variant="contained" onClick={handleClose} color="primary">
             Submit
           </Button>
         </DialogActions>

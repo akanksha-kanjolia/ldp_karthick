@@ -6,17 +6,19 @@ import Clock from "../../atoms/icon/clock";
 
 const useStyles = makeStyles({
     cardBottom: {
-        position:'relative',
+        position: 'relative',
         padding: '0px 15px',
         backgroundColor: '#fff',
         border: '1px solid #d4d4d4',
-        height: '150px',
+        height: '190px',
+        borderTop: "0",
     },
     buttonCss: {
-        position:'absolute',
-        bottom:'0',
-        right:'100px',
-       // borderTop: '1px solid #BAC8CE',
+        position: 'absolute',
+        bottom: '0',
+        right: '0',
+        borderTop: '1px solid #BAC8CE',
+        padding: "1rem 0",
     }
 });
 
@@ -31,7 +33,7 @@ const CardBottom = ({ book, eventListener }) => {
                 {book.author}
             </Text>
             <Text variant='body1'><Clock /> {book.time}-minute read</Text>
-            <Button className={classes.buttonCss} onClick={() => eventListener(book)} children={book.value === 0 ? "Finished" : "Read Again"} />
+            <Button className={classes.buttonCss} fullWidth="true" onClick={() => eventListener(book)} children={book.value === 0 ? "Finished" : "Read Again"} />
         </div>
 
     );

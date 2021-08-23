@@ -1,15 +1,33 @@
-.App {
-  text-align: center;
+.List{
+  max-width: 1024px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.midtext{
+  padding: 3.125rem 0px 2.5rem;
+}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header_content{
+  margin-left: 2.5rem !important;
+}
+
+.header_middle{
+  margin-left: 1.0rem !important;
+}
+
+.header_middle:after {
+  content: "";
+}
+
+.header{
+  position: relative;
+  padding: 0.75rem 0 0.75rem;
+}
+
+.book_grid{
+  grid-column: auto/span 4;
+  margin-bottom: 2rem;
+  width: 100%;
 }

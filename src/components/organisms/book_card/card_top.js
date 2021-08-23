@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const CardTop = ({ book }) => {
   const useStyles = makeStyles({
     cardTop: {
-      height: '250px',
+      height: '265px',
       padding: '15px',
       backgroundSize: 'cover',
       color: '#fff',

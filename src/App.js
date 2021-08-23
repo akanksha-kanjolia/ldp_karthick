@@ -1,6 +1,5 @@
 import './App.css';
 import List from './pages/list/list';
-//import Temp from './pages/list/temp';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Detail from './pages/detail';
 

@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 function Text(props) {
     const { variant, children='Text', ...rest } = props
     return (
-        <Typography variant={variant} {...rest}>{children}</Typography>
+        <Typography data-testid = "text" variant={variant} {...rest}>{children}</Typography>
     )
 }
 

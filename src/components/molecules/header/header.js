@@ -8,59 +8,56 @@ import { makeStyles } from '@material-ui/core/styles';
 import FormDialog from '../../organisms/dialog/dialog';
 
 const useStyles = makeStyles({
-  root: {
-      fontWeight: 'bold',
-      float: 'left',
-      marginLeft: '12.8em',
-      fontSize: '2rem',
-      fontFamily: 'system-ui',
-      color: '#03314B',
+  header: {
+    display: "flex",
   }
 });
 
 const Header = ({ props, eventListener }) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-        <table style={{float:'left'}}>
+    <div className={`header ${classes.header}`}>
+      <table>
+        <tbody>
           <tr>
-            <td>
-              <div className='header_logo'>
-                <MainIcon />
-              </div>
-            </td>
-            <td>
-              <IconButton aria-label="search">
-                <SearchIcon />
-              </IconButton>
-            </td>
-            <td>
-              <Button>Explore</Button>
-            </td>
-            <td>
-              <Button>My Library</Button>
-            </td>
-            <td>
-              <Button>Highlights</Button>
-            </td>
-            <td>
-              <FormDialog eventListener={eventListener} />
-            </td>
-            <td>
-              <Button variant='contained' className='greenbutton'>Upgrade To Premium</Button>
-            </td>
-            <td>
-              <Button
-                endIcon={<ExpandMoreIcon />}
-              >
-                Account
-              </Button>
-            </td>
-          </tr>
-        </table>
+          <td>
+            <div className='header_logo'>
+              <MainIcon />
+            </div>
+          </td>
+          <td>
+            <IconButton className='header_middle' aria-label="search">
+              <SearchIcon />
+            </IconButton>
+          </td>
+          <td>
+            <Button className='header_middle'  endIcon={<ExpandMoreIcon />}>Explore</Button>
+          </td>
+          <td>
+            <Button className='header_middle'>My Library</Button>
+          </td>
+          <td>
+            <Button className='header_middle'>Highlights</Button>
+          </td>
+          <td>
+            <FormDialog className='header_middle' eventListener={eventListener} />
+          </td>
+          <td>
+            <Button className="header_content" variant='contained' color="primary">Upgrade To Premium</Button>
+          </td>
+          <td>
+            <Button className="header"
+              endIcon={<ExpandMoreIcon />}
+            >
+              Account
+            </Button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
 
   )
 }
 
-export default Header
+export default Header;

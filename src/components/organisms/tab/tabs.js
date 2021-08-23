@@ -7,17 +7,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import BookCard from '../book_card/card';
 import Grid from '@material-ui/core/Grid';
 import { Container } from '@material-ui/core';
-import { Paper } from '@material-ui/core';
 import { Box } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     root: {
-        maxWidth: '56rem',
+        borderBottom: '1px solid #e8e8e8',
     },
     paper: {
-        padding: '7rem 0',
+        marginLeft: '0',
     },
 }));
 
@@ -34,7 +33,7 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box p={3}>
-                    <Typography>{children}</Typography>
+                    {children}
                 </Box>
             )}
         </div>
@@ -53,7 +52,7 @@ const Tabs = forwardRef((props, ref) => {
     const [data1, setData1] = React.useState([]);
     const [data2, setData2] = React.useState([]);
     useImperativeHandle(ref, () => ({
-         addBook(book){
+        addBook(book) {
             if (value === 0) {
                 setData1([...data1, {
                     id: data1.length,
@@ -103,7 +102,7 @@ const Tabs = forwardRef((props, ref) => {
             setData2([...lists])
         }
     }
-    
+
     useEffect(() => {
         var url;
         if (value === 0) {
@@ -116,30 +115,24 @@ const Tabs = forwardRef((props, ref) => {
             const newbooks = books.map(book => ({ ...book, value: value }));
             if (value === 0 && data1.length === 0) {
                 setData1([...newbooks])
-                console.log("data1")
-            } else if(value === 1 && data2.length === 0){
+            } else if (value === 1 && data2.length === 0) {
                 setData2([...newbooks])
-                console.log("data2")
             }
         });
     }, [value]);
     return (
         <div>
             <Container className={classes.paper} >
-            <div className='midtext' >
-                <Typography variant='h4'>My Library</Typography>
-            </div>
-                <Paper>
-                    <MUITabs value={value}
-                        centered>
-                        <Tab label="Currently Reading" onClick={() => setValue(0)} />
-                        <Tab label="Finished" onClick={() => setValue(1)} />
-                    </MUITabs>
-                </Paper>
+                <div className='midtext' >
+                    <Typography variant='h4'>My Library</Typography>
+                </div>
+                <MUITabs value={value} className={classes.root} indicatorColor="primary">
+                    <Tab label="Currently Reading" onClick={() => setValue(0)} />
+                    <Tab label="Finished" onClick={() => setValue(1)} />
+                </MUITabs>
                 <TabPanel value={value} index={0} >
                     <div id='grid1'>
-                        <Grid container spacing={2} className={classes.root} align="center" >
-
+                        <Grid className="book_grid" container spacing={2} >
                             {Object.keys(data1).map(key =>
                                 <Grid item xs={12} sm={4}>
 
@@ -151,10 +144,10 @@ const Tabs = forwardRef((props, ref) => {
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     <div id='grid2'>
-                        <Grid container spacing={2} className={classes.root} align="center" >
+                        <Grid className="book_grid" container spacing={2} >
                             {Object.keys(data2).map(key =>
                                 <Grid item xs={12} sm={4}>
-                                    <BookCard key={key} book={data2[key]} eventListener={updateBook}/>
+                                    <BookCard key={key} book={data2[key]} eventListener={updateBook} />
                                 </Grid>
                             )}
                         </Grid>

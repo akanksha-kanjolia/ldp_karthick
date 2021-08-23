@@ -15,8 +15,8 @@ const BookCard = ({ book, eventListener }) => {
     const classes = useStyles();
     return (
 
-        <Card className={classes.root}>
-            <Link to={'/detail/1'}>
+        <Card className={classes.root} elevation={0}>
+            <Link to={`/detail/${book.id}`}>
                 <CardTop book={book} />
             </Link>
             <CardBottom book={book} eventListener={eventListener} />
